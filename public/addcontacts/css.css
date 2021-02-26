@@ -1,0 +1,112 @@
+body.modal-open {
+  padding: 0;
+}
+.modal {
+  
+  position: absolute;
+  font-family: system-ui;
+  height: 40%;
+  width: 29%;
+    top: 52%;
+    left: 65%;
+  transform: translateX(-50%) translateY(-50%);
+  background:darksalmon;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid gray;
+  display: none;
+  border: 2px solid sandybrown;
+  color: yellow;
+  }
+
+  input[type="text"] {
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    background:;
+    margin-top: 10px;
+    text-align: center;
+    border-bottom-style: ridge;
+    font-variant: all-petite-caps;
+
+  }
+
+  input#submit-btn {
+    font-weight: 400;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: block;
+    background: #3b5998;
+    color: #fff;
+    border-radius: .25rem;
+    margin: auto;
+}
+
+button.close-btn {
+  font-weight: 400;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: block;
+  background: crimson;
+  color: #fff;
+  border-radius: .25rem;
+  margin: auto;
+}
+
+tr {
+  background: bottom;
+    padding: 20px;
+    max-height: 300px;
+    max-width: 300px;
+    -webkit-box-shadow: 0 15px 30px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 15px 30px 0 rgb(0 0 0 / 20%);
+    margin-inline: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: 2px solid salmon;
+    display: -webkit-inline-box;
+}
+
+span.table-span2 {
+  display: block;
+  font-family: cursive;
+  margin: 15px;
+  font-variant: all-petite-caps;
+}
+
+button.delete-contact {
+  background-color: black;
+  border: 2px solid sandybrown;
+  border-radius: 100px;
+  color: yellow;
+  font-family: sans-serif;
+  padding: 0.4em 2em 0.4em 2em;
+  display: inline-block;
+  margin: 20px;
+  text-decoration: wavy;
+}
+@media screen and (max-width: 991px) {
+  .modal {
+    top: 50%;
+    width: 36%;
+    left: 65%;
+  }
+}
+@media screen and (max-width: 562px) {
+  .modal {
+    
+    top: 78%;
+    left: 50%;
+    width: 70%;
+}
+}
+
+}

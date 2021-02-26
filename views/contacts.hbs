@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact page</title>
+    <link rel="stylesheet" href="/css/contact-css.css">
+    <link rel="stylesheet" href="/css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/css/aos.css">
+    <link rel="stylesheet" href="/css/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/css/templatemo-digital-trend.css">
+    <link rel="stylesheet" href="/addcontacts/css.css">
+    {{!-- <script src="/frontendRoutes/contacts.js"></script> --}}
+    
+</head>
+<body>
+     
+     <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>logo</span>Website Name
+          </a>
+  
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a href="/" class="nav-link smoothScroll">Home</a>
+                      </li>
+                      <ul>
+                        <li>
+                          <img src="/images/Profile.png" alt="Admin" width="40"><i class="fas fa-angle-down"></i>
+                          <div class="dropdown">
+                            <button class="dropbtn">{{username}}</button>
+                            <div class="dropdown-content">
+                              <a href="logout">Logout</a>
+                            </div>
+                          </div>
+                        </li>
+                     </ul> 
+                  </ul>
+              </div>
+        </div>
+     </nav>
+     <div class="buttons">
+     <a id="location-btn" type="button" class="sharelocation">Share Location</a>
+     {{!-- <a href="#" type="button" class="addcontacts">Add More Contacts</a> --}}
+     
+     <button type="button" data-toggle="modal" data-target="#myModal" class="addcontacts">
+        Add More Contacts
+     </button>
+      
+      <!-- Modal -->
+     <div class="modal" id="myModal">
+          <form action="/user/contacts/add" method="POST">
+              <div>
+                  <input type="text" placeholder="name" name="name">
+              </div>
+              <div>
+                  <input type="text" placeholder="number" name="contactNumber">
+              </div>
+              <br>
+              <div>
+                  <input id="submit-btn" type="submit" value="save">
+              </div>
+          </form>
+          <br>
+          <button class="close-btn" type="button" data-dismiss="modal">Close</button>
+     </div>
+     </div>
+
+
+
+     <table class="contact-table">
+        
+        
+        <tbody class="contact-tbody">
+            {{#each contactArray}}
+              <tr>
+                <div>
+                  <td >
+                  
+                     <span class="table-span2">{{this.name}}</span>
+                     <span class="table-span2">{{this.number}}</span>
+                     <button type="button" class="delete-contact" value={{this.id}}>delete</button>
+                   
+                  </td>
+                </div>
+              </tr>
+            {{/each}}
+        </tbody>
+     </table>
+    
+    {{!-- {{contactArray}} --}}
+    
+    {{!-- <script type="text/x-handlebars-template"> --}}
+        {{!-- //console.log({{contactArray}}); --}}
+        {{!-- //const contactlist={{contactArray}} --}}
+        {{!-- contactlist --}}
+        {{!-- //[{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"},{name:"ajay",number:7887366403,button1:"update",button2:"delete"}]; --}}
+        {{!-- //{{contactArray}}
+         // function genrateList(contactlist){
+            //const tbody=document.querySelector('.contact-tbody');
+            //contactlist.forEach((contact)=>{ --}} 
+              {{!-- {{contactArray}} --}}
+                 {{!-- {{#each this}}
+                    <h1>this</h1>
+                    {{!-- //console.log("this") --}}
+                 {{!-- {{/each}} --}}
+              {{!-- {{/each}}  --}}
+              {{!-- //console.log(contact);
+              //console.log("hi");
+               // const tr=document.createElement("tr");
+                //tr.classList.add("tbody-tr")
+                //const td=document.createElement("td");
+                //td.classList.add("tbody-tr-td");
+                //const span1=document.createElement("span");
+                //span1.classList.add("table-span1")
+                //const span2=document.createElement("span");
+                //span2.classList.add("table-span2")
+                //const span3=document.createElement("button");
+                //span3.classList.add("table-span3")
+                
+                //const span4=document.createElement("button");
+                //span4.classList.add("table-span4")
+                //const name=document.createTextNode(contact.name);
+                //const number=document.createTextNode(contact.number);
+                //const button1=document.createTextNode("UPDATE");
+                
+                //const button2=document.createTextNode("DELETE");
+                //span1.appendChild(name);
+                //span2.appendChild(number);
+                //span3.appendChild(button1);
+                
+                //span4.appendChild(button2);
+                //td.appendChild(span1);
+                //td.appendChild(span2);
+                //td.appendChild(span3);
+                //td.appendChild(span4);
+                //tr.appendChild(td);
+                //tbody.appendChild(tr);
+         
+            //})
+        
+       // }
+      //  genrateList(contactlist);  --}}
+   </script>
+   <script src="/frontendRoutes/index.js"></script>
+   <script src="/addcontacts/javascript.js"></script>
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+   <script>
+      $(function(){
+        $("#nav-placeholder").load("nav.html");
+      });
+   </script>
+   <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/css/firstpage.js"></script> 
+
+</body>
+</html>
