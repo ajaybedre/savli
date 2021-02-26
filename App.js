@@ -18,7 +18,7 @@ app.set('view engine','hbs');
 
 app.use(express.static(path.join(__dirname+'/public')));
 
-const port=process.env.PORT;
+const port=process.env.PORT||8000;
 const url=process.env.DATABASE_API_KEY;
 
 
