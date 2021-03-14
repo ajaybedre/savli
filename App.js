@@ -4,11 +4,14 @@ const sessionstorage=require('sessionstorage');
 const cors=require('cors');
 const path=require('path');
 require('dotenv').config();
-const jwt=require('jsonwebtoken')
+const jwt=require('jsonwebtoken');
+const cookieParser=require('cookie-parser');
+const webpush=require('web-push');
 const mongoose=require('mongoose');
 const { static } = require('express');
 const app=express();
 app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true})); 
 
@@ -17,6 +20,7 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine','hbs');
 
 app.use(express.static(path.join(__dirname+'/public')));
+
 
 const port=process.env.PORT||8000;
 const url=process.env.DATABASE_API_KEY;
@@ -31,28 +35,31 @@ mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true,useCreateInde
 app.listen(port,()=>console.log(`Server started on port ${port}`))
 
 
-//console.log(path.join(__dirname+"/public"));
+
+
 
 const indexRoutes=require("./routes/index");
 const loginRoutes=require("./routes/login");
 const registerRoutes=require("./routes/register");
- //const isAuth=require("./controllers/auth")
+
 
 const contactRoutes=require("./routes/contacts");
 const locationRoutes=require("./routes/location");
 const forgotPasswordRoutes=require("./routes/forgotPassword");
 const logoutRoutes=require("./routes/logoutRoutes");
+const notificationRoutes=require("./routes/notification")
+
 
 app.use('/',indexRoutes);
 app.use('/login',loginRoutes);
 app.use('/register',registerRoutes);
 app.use('/user/forgotPassword',forgotPasswordRoutes);
-//console.log("before");
-//app.use(isAuth);
-//console.log("after");
+app.use('/user/notify',notificationRoutes);
+
 app.use('/user/logout',logoutRoutes);
 app.use('/user/contacts',contactRoutes);
 app.use('/user/location',locationRoutes);
+
 
 
 

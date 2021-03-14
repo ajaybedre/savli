@@ -1,10 +1,12 @@
-const sessionstorage=require('sessionstorage');
+//const sessionstorage=require('sessionstorage');
+const cookieParser=require('cookie-parser')
 const express=require('express');
 const router=express.Router();
 
 
 router.get('/',(req,res)=>{
-    sessionstorage.removeItem('token');
+    res.clearCookie('token');
+   // sessionstorage.removeItem('token');
     return res.redirect('/')
 });
 

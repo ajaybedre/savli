@@ -1,13 +1,13 @@
 const contacts = require('../models/contacts');
 const fast2sms = require('fast-two-sms');
-const sessionstorage=require('sessionstorage');
+//const sessionstorage=require('sessionstorage');
 const jwt=require('jsonwebtoken');
 
 
 exports.sendMessage=(async(req,res)=>{
     var user=null;
     var contactArray=[];
-    const token=sessionstorage.getItem("token");
+    const token=req.cookies.token;
     if(token){
         user=jwt.verify(token,process.env.JWT_SECRET);
     }
@@ -33,22 +33,3 @@ exports.sendMessage=(async(req,res)=>{
     })
 });
 
-
-// exports.shareLocation=(req,res,next)=>{
-//     const geoAccess= navigator.geolocation;
-
-//     if(geoAccess){
-
-//        const success=(position)=>{                                  //doubt with passing multiple params
-//             req.lon=(position.coords.longitude);
-//             req.lat=(position.coords.latitude);
-//        }
-//        const failure=(error)=>{return res.status(500).json({error})}
-//        naigator.geolocation.getCurrentPosition(success,failure);
-//        next();
-   
-//     }else{
-//        return res.status(500).json({"message":"Location access denied by the user!"})
-//     }
-    
-// }

@@ -1,16 +1,12 @@
-//const token=sessionStorage.getItem("token");
-//console.log("hello");
-//window.onload()
 
-    
 
 const geoAccess= navigator.geolocation;
 var lat;
 var lon;
-
+//console.log("geo"+geoAccess);
 if(geoAccess){
     const success=async (position)=>{
-        lon=position.coords.longitude;
+        lon=await position.coords.longitude;
         lat=await position.coords.latitude;
         
     }
@@ -52,6 +48,19 @@ document.getElementById('location-btn').addEventListener('click',async (e)=>{
        
 })
 
+//added
+
+// fetch('/', {
+//     method: 'GET',
+//     credentials: 'include'
+//   })
+//     .then((response) => response.json())
+//     .then((json) => {
+//       console.log('Everything is fine!');
+//     }).catch((err) => {
+//       console.log(err);
+//   });
+    
 
     
 

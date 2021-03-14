@@ -1,14 +1,14 @@
 const express=require('express');
 const jwt=require('jsonwebtoken');
 const contact = require('../models/contacts');
-const sessionStorage=require('sessionstorage');
+//const sessionStorage=require('sessionstorage');
 
 
 
 exports.addContact=(async (req,res)=>{
     var token=null;
     var user=null;
-    token=sessionStorage.getItem("token");
+    token=req.cookies.token;
     if(token){
         user=jwt.verify(token,process.env.JWT_SECRET);
     }
@@ -39,7 +39,7 @@ exports.deleteContacts=async (req,res)=>{
 };
 
 exports.getContacts=async(req,res)=>{  
-    const token=sessionStorage.getItem("token");
+    const token=req.cookies.token;
     if(token){
         var contactArray=[];
         const user=jwt.verify(token,process.env.JWT_SECRET);                
@@ -48,6 +48,9 @@ exports.getContacts=async(req,res)=>{
             contactArray.push({"name":contactData.name,"number":contactData.contact,"id":contactData._id});
         })
         return res.render('contacts',{"contactArray":contactArray,"username":user.username});
+    }
+    else{
+        return res.redirect('/')
     }
     
 };

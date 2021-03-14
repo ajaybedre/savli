@@ -1,5 +1,6 @@
 const jwt =require("jsonwebtoken");
-const sessionStorage=require('sessionstorage');
+//const sessionStorage=require('sessionstorage');
+const cookieParser=require('cookie-parser');
 
 const users=require('../models/users');
 
@@ -10,14 +11,15 @@ exports.userSignin=(async (req,res)=>{
         const user=await users.findOne({username:req.body.username});
         if(user){
             if(user.Authenticate(req.body.password)){
-                token=jwt.sign({_id:user._id,contact:user.contactNumber,username:user.username},process.env.JWT_SECRET,{expiresIn:"1h"});
+                token=jwt.sign({_id:user._id,contact:user.contactNumber,username:user.username},process.env.JWT_SECRET,{expiresIn:"7d"});
             }else{
                 message="Incorrect Password!";
                 return res.render('login',{"message":message});
             }
         }
         if(token){
-            sessionStorage.setItem("token", token);
+            res.cookie('token', token,{ maxAge: 365*24*36000 } );
+           // sessionStorage.setItem("token", token);
             return res.redirect('/');
         }
         else{
