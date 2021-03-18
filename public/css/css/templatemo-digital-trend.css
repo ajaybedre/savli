@@ -73,6 +73,10 @@ https://templatemo.com/tm-538-digital-trend
   img {
     height: 70px;
   }
+strong.web-name {
+    color: #f1c111;
+    margin: 10px;
+}
   h1,h2,h3,h4,h5,h6 {
     font-family: var(--title-font-family);
     line-height: inherit;
