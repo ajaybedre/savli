@@ -70,6 +70,9 @@ https://templatemo.com/tm-538-digital-trend
      TYPOGRAPHY              
   -----------------------------------------*/
 
+  img {
+    height: 70px;
+  }
   h1,h2,h3,h4,h5,h6 {
     font-family: var(--title-font-family);
     line-height: inherit;
