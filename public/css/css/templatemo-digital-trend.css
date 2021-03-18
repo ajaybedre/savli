@@ -178,7 +178,9 @@ strong.web-name {
 span.text-center.my-3.d-block {
     color: var(--secondary-color);
 }
-
+h3.head {
+    font-size: 2.3rem;
+}
 
   /*---------------------------------------
      GENERAL               
