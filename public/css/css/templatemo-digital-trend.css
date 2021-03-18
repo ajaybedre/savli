@@ -175,6 +175,9 @@ strong.web-name {
     color: var(--white-color);
     border-color: transparent;
   }
+span.text-center.my-3.d-block {
+    color: var(--secondary-color);
+}
 
 
   /*---------------------------------------
